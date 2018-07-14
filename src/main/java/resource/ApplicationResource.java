@@ -4,7 +4,7 @@ import controller.ControllerMethod;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 路由封装基类
@@ -13,7 +13,7 @@ public abstract class ApplicationResource extends CoapResource {
     /**
      * 方法存储
      */
-    private final HashMap<RequestType, ControllerMethod> map = new HashMap<>();
+    private final ConcurrentHashMap<RequestType, ControllerMethod> map = new ConcurrentHashMap<>();
 
     /**
      * 构造函数
