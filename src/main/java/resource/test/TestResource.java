@@ -14,5 +14,6 @@ public class TestResource extends ApplicationResource {
     public TestResource() {
         super("test");
         this.registerMethod(RequestType.GET, TestController::test);
+        this.registerMethod(RequestType.POST, TestController::test);
     }
 }

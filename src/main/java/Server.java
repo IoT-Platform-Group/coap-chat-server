@@ -1,5 +1,3 @@
-package lib;
-
 import config.ApplicationConfig;
 import org.eclipse.californium.core.CoapServer;
 import org.eclipse.californium.core.network.CoapEndpoint;
@@ -11,11 +9,11 @@ import java.net.InetSocketAddress;
 /**
  * 主服务对象
  */
-public class Server extends CoapServer {
+class Server extends CoapServer {
     /**
      * 构造函数
      */
-    public Server() {
+    Server() {
         initialize();
     }
 

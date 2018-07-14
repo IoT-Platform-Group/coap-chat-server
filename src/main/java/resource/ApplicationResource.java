@@ -64,8 +64,8 @@ public abstract class ApplicationResource extends CoapResource {
      */
     @Override
     public void handleGET(CoapExchange exchange) {
-        super.handleGET(exchange);
         this.executeMethod(RequestType.GET, exchange);
+        super.handleGET(exchange);
     }
 
 
@@ -76,8 +76,8 @@ public abstract class ApplicationResource extends CoapResource {
      */
     @Override
     public void handlePOST(CoapExchange exchange) {
-        super.handlePOST(exchange);
         this.executeMethod(RequestType.POST, exchange);
+        super.handlePOST(exchange);
     }
 
     /**
@@ -87,8 +87,8 @@ public abstract class ApplicationResource extends CoapResource {
      */
     @Override
     public void handlePUT(CoapExchange exchange) {
-        super.handlePUT(exchange);
         this.executeMethod(RequestType.PUT, exchange);
+        super.handlePUT(exchange);
     }
 
     /**
@@ -98,7 +98,7 @@ public abstract class ApplicationResource extends CoapResource {
      */
     @Override
     public void handleDELETE(CoapExchange exchange) {
-        super.handleDELETE(exchange);
         this.executeMethod(RequestType.DELETE, exchange);
+        super.handleDELETE(exchange);
     }
 }
