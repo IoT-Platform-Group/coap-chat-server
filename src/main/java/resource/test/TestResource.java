@@ -1,8 +1,8 @@
-package route.test;
+package resource.test;
 
 import controller.TestController;
-import lib.RequestType;
-import route.ApplicationResource;
+import resource.RequestType;
+import resource.ApplicationResource;
 
 /**
  * 测试资源

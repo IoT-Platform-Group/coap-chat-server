@@ -1,5 +1,5 @@
 import lib.Server;
-import route.test.TestResource;
+import resource.test.TestResource;
 
 import java.util.concurrent.Executors;
 

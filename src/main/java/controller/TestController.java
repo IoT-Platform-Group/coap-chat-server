@@ -13,5 +13,6 @@ public class TestController extends ApplicationController {
      */
     public static void test(CoapExchange exchange) {
         System.out.println("Test is called!");
+        System.out.println(exchange.getQueryParameter("fuck"));
     }
 }
