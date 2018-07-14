@@ -73,7 +73,10 @@ public class ApplicationResource extends CoapResource {
     @Override
     public void handleGET(CoapExchange exchange) {
         this.executeMethod(RequestType.GET, exchange);
-        super.handleGET(exchange);
+        //super.handleGET(exchange);    // 我这里测试的时候，去掉这行chat依然能跑起来
+                                        // 但是如果加上这行，Observable资源不能正常运行
+                                        // 明天再确认一下吧
+                                        // TODO 确认这里调用超类方法的必要性
     }
 
 
@@ -85,7 +88,7 @@ public class ApplicationResource extends CoapResource {
     @Override
     public void handlePOST(CoapExchange exchange) {
         this.executeMethod(RequestType.POST, exchange);
-        super.handlePOST(exchange);
+        //super.handlePOST(exchange);   // TODO 确认这里调用超类方法的必要性
     }
 
     /**
@@ -96,7 +99,7 @@ public class ApplicationResource extends CoapResource {
     @Override
     public void handlePUT(CoapExchange exchange) {
         this.executeMethod(RequestType.PUT, exchange);
-        super.handlePUT(exchange);
+        //super.handlePUT(exchange);    // TODO 确认这里调用超类方法的必要性
     }
 
     /**
@@ -107,7 +110,7 @@ public class ApplicationResource extends CoapResource {
     @Override
     public void handleDELETE(CoapExchange exchange) {
         this.executeMethod(RequestType.DELETE, exchange);
-        super.handleDELETE(exchange);
+        //super.handleDELETE(exchange);     // TODO 确认这里调用超类方法的必要性
     }
 
 

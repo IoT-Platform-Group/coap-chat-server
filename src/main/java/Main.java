@@ -1,6 +1,7 @@
 import controller.TestController;
 import resource.ApplicationResource;
 import resource.ChatResource;
+import resource.ObservableResource;
 import resource.TestResource;
 
 import java.util.concurrent.Executors;
@@ -19,6 +20,8 @@ public abstract class Main {
         server
                 .add(new TestResource())
                 .add(new ChatResource());
+        server
+                .add(new ObservableResource());
         Executors.newSingleThreadExecutor().execute(server::start);
     }
 }
