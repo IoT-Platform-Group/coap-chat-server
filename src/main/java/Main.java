@@ -1,4 +1,7 @@
-import resource.test.TestResource;
+import controller.TestController;
+import resource.ApplicationResource;
+import resource.ChatResource;
+import resource.TestResource;
 
 import java.util.concurrent.Executors;
 
@@ -14,7 +17,8 @@ public abstract class Main {
     public static void main(String[] args) {
         Server server = new Server();
         server
-                .add(new TestResource());
+                .add(new TestResource())
+                .add(new ChatResource());
         Executors.newSingleThreadExecutor().execute(server::start);
     }
 }

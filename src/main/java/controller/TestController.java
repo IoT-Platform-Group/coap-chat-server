@@ -12,8 +12,8 @@ public class TestController extends ApplicationController {
      * @param exchange 交换对象
      */
     public static void test(CoapExchange exchange) {
-        System.out.println("Test is called!");
-        System.out.println(exchange.getQueryParameter("fuck"));
-        exchange.respond(String.format("faq: %s", exchange.getQueryParameter("fuck")));
+        String token = exchange.getQueryParameter("token");
+        System.out.println(String.format("Test is called! Token is %s.", token));
+        exchange.respond(String.format("Test is received, the token is %s.", token));
     }
 }

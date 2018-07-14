@@ -1,6 +1,6 @@
 package resource;
 
-import controller.ControllerMethod;
+import controller.ApplicationController;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 
@@ -9,18 +9,25 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 路由封装基类
  */
-public abstract class ApplicationResource extends CoapResource {
+public class ApplicationResource extends CoapResource {
+    /**
+     * 请求类型
+     */
+    public enum RequestType {
+        GET, POST, PUT, DELETE
+    }
+
     /**
      * 方法存储
      */
-    private final ConcurrentHashMap<RequestType, ControllerMethod> map = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<RequestType, ApplicationController.ControllerMethod> map = new ConcurrentHashMap<>();
 
     /**
      * 构造函数
      *
      * @param name 资源名
      */
-    public ApplicationResource(String name) {
+    ApplicationResource(String name) {
         super(name);
     }
 
@@ -30,7 +37,7 @@ public abstract class ApplicationResource extends CoapResource {
      * @param name    资源名
      * @param visible 可见性
      */
-    public ApplicationResource(String name, boolean visible) {
+    ApplicationResource(String name, boolean visible) {
         super(name, visible);
     }
 
@@ -41,7 +48,7 @@ public abstract class ApplicationResource extends CoapResource {
      * @param exchange 交换对象
      */
     private void executeMethod(RequestType type, CoapExchange exchange) {
-        ControllerMethod method = map.getOrDefault(type, null);
+        ApplicationController.ControllerMethod method = map.getOrDefault(type, null);
         if (method != null) {
             method.execute(exchange);
         }
@@ -53,8 +60,9 @@ public abstract class ApplicationResource extends CoapResource {
      * @param type   请求类型
      * @param method 交换对象
      */
-    protected void registerMethod(RequestType type, ControllerMethod method) {
+    ApplicationResource registerMethod(RequestType type, ApplicationController.ControllerMethod method) {
         map.put(type, method);
+        return this;
     }
 
     /**
@@ -101,4 +109,6 @@ public abstract class ApplicationResource extends CoapResource {
         this.executeMethod(RequestType.DELETE, exchange);
         super.handleDELETE(exchange);
     }
+
+
 }
