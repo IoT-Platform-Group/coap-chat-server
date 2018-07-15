@@ -1,30 +1,48 @@
 package resource;
 
-
-import controller.ObservableController;
+import controller.ApplicationController;
 import org.eclipse.californium.core.coap.CoAP;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
+/**
+ * 可观察资源
+ */
 public class ObservableResource extends ApplicationResource {
+    /**
+     * 构造函数
+     *
+     * @param name 资源名
+     */
+    public ObservableResource(String name) {
+        super(name);
+    }
 
-    public ObservableResource() {
-        super("obs");
+    /**
+     * 构造函数
+     *
+     * @param name    资源名
+     * @param visible 可见性
+     */
+    ObservableResource(String name, boolean visible) {
+        super(name, visible);
+    }
 
+    /**
+     * 初始化函数
+     */
+    protected void initialize() {
+        super.initialize();
         setObservable(true);
         setObserveType(CoAP.Type.CON);
+    }
 
-
-        this.registerMethod(RequestType.GET, ObservableController::update);
-
-
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                changed();
-            }
-        }, 0, 5000);  // 每5秒
+    /**
+     * 注册观察方法
+     *
+     * @param method 控制器方法
+     * @return 资源对象
+     */
+    public ObservableResource registerObserveMethod(ApplicationController.ControllerMethod method) {
+        this.registerMethod(RequestType.GET, method);
+        return this;
     }
 }

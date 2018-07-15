@@ -29,6 +29,7 @@ public class ApplicationResource extends CoapResource {
      */
     ApplicationResource(String name) {
         super(name);
+        this.initialize();
     }
 
     /**
@@ -39,6 +40,13 @@ public class ApplicationResource extends CoapResource {
      */
     ApplicationResource(String name, boolean visible) {
         super(name, visible);
+        this.initialize();
+    }
+
+    /**
+     * 初始化方法
+     */
+    protected void initialize() {
     }
 
     /**
@@ -47,10 +55,13 @@ public class ApplicationResource extends CoapResource {
      * @param type     请求类型
      * @param exchange 交换对象
      */
-    private void executeMethod(RequestType type, CoapExchange exchange) {
+    private boolean executeMethod(RequestType type, CoapExchange exchange) {
         ApplicationController.ControllerMethod method = map.getOrDefault(type, null);
         if (method != null) {
             method.execute(exchange);
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -72,11 +83,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handleGET(CoapExchange exchange) {
-        this.executeMethod(RequestType.GET, exchange);
-        //super.handleGET(exchange);    // 我这里测试的时候，去掉这行chat依然能跑起来
-                                        // 但是如果加上这行，Observable资源不能正常运行
-                                        // 明天再确认一下吧
-                                        // TODO 确认这里调用超类方法的必要性
+        if (!this.executeMethod(RequestType.GET, exchange)) {
+            super.handleGET(exchange);
+        }
     }
 
 
@@ -87,8 +96,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handlePOST(CoapExchange exchange) {
-        this.executeMethod(RequestType.POST, exchange);
-        //super.handlePOST(exchange);   // TODO 确认这里调用超类方法的必要性
+        if (!this.executeMethod(RequestType.POST, exchange)) {
+            super.handlePOST(exchange);
+        }
     }
 
     /**
@@ -98,8 +108,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handlePUT(CoapExchange exchange) {
-        this.executeMethod(RequestType.PUT, exchange);
-        //super.handlePUT(exchange);    // TODO 确认这里调用超类方法的必要性
+        if (!this.executeMethod(RequestType.PUT, exchange)) {
+            super.handlePUT(exchange);
+        }
     }
 
     /**
@@ -109,8 +120,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handleDELETE(CoapExchange exchange) {
-        this.executeMethod(RequestType.DELETE, exchange);
-        //super.handleDELETE(exchange);     // TODO 确认这里调用超类方法的必要性
+        if (!this.executeMethod(RequestType.DELETE, exchange)) {
+            super.handleDELETE(exchange);
+        }
     }
 
 

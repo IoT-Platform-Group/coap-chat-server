@@ -6,10 +6,10 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
  * 全局控制器基类
  * <p>
  * 用法：
- * 1、继承该类，且所有子类均为抽象类
+ * 1、继承该类
  * <p>
  * 建议：
- * 1、该类内所有方法均为静态方法
+ * 1、该类所有非抽象的子类均应该为单例模式
  * 2、该类内所有被路由调用的方法均为void method(CoapExchange exchange)的形式
  */
 public abstract class ApplicationController {
