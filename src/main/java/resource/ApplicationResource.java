@@ -47,10 +47,13 @@ public class ApplicationResource extends CoapResource {
      * @param type     请求类型
      * @param exchange 交换对象
      */
-    protected void executeMethod(RequestType type, CoapExchange exchange) {
+    private boolean executeMethod(RequestType type, CoapExchange exchange) {
         ApplicationController.ControllerMethod method = map.getOrDefault(type, null);
         if (method != null) {
             method.execute(exchange);
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -72,8 +75,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handleGET(CoapExchange exchange) {
-        this.executeMethod(RequestType.GET, exchange);
-        super.handleGET(exchange);
+        if (!this.executeMethod(RequestType.GET, exchange)) {
+            super.handleGET(exchange);
+        }
     }
 
 
@@ -84,8 +88,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handlePOST(CoapExchange exchange) {
-        this.executeMethod(RequestType.POST, exchange);
-        super.handlePOST(exchange);
+        if (!this.executeMethod(RequestType.POST, exchange)) {
+            super.handlePOST(exchange);
+        }
     }
 
     /**
@@ -95,8 +100,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handlePUT(CoapExchange exchange) {
-        this.executeMethod(RequestType.PUT, exchange);
-        super.handlePUT(exchange);
+        if (!this.executeMethod(RequestType.PUT, exchange)) {
+            super.handlePUT(exchange);
+        }
     }
 
     /**
@@ -106,8 +112,9 @@ public class ApplicationResource extends CoapResource {
      */
     @Override
     public void handleDELETE(CoapExchange exchange) {
-        this.executeMethod(RequestType.DELETE, exchange);
-        super.handleDELETE(exchange);
+        if (!this.executeMethod(RequestType.DELETE, exchange)) {
+            super.handleDELETE(exchange);
+        }
     }
 
 

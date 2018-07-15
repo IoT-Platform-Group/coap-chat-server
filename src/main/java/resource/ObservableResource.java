@@ -6,13 +6,13 @@ import org.eclipse.californium.core.coap.CoAP;
 /**
  * 可观察资源
  */
-class ObservableResource extends ApplicationResource {
+public class ObservableResource extends ApplicationResource {
     /**
      * 构造函数
      *
      * @param name 资源名
      */
-    ObservableResource(String name) {
+    public ObservableResource(String name) {
         super(name);
         this.initialize();
     }

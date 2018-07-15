@@ -3,6 +3,8 @@ import resource.ApplicationResource;
 import resource.ChatResource;
 import resource.TestResource;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 
 /**
@@ -20,5 +22,12 @@ public abstract class Main {
                 .add(TestResource.getInstance())
                 .add(ChatResource.getInstance());
         Executors.newSingleThreadExecutor().execute(server::start);
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                TestResource.getInstance().getObs().changed();
+            }
+        }, 0, 5000);
     }
 }

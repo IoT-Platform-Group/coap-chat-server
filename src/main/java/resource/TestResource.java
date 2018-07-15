@@ -24,12 +24,29 @@ public class TestResource extends ApplicationResource {
     }
 
     /**
+     * obs对象
+     */
+    private final ObservableResource obs;
+
+    /**
      * 构造函数
      */
     private TestResource() {
         super("test");
+        obs = new ObservableResource("obs").registerObserveMethod(TestController.getInstance()::getTime);
         this
                 .registerMethod(RequestType.GET, TestController.getInstance()::test)
-                .registerMethod(RequestType.POST, TestController.getInstance()::test);
+                .registerMethod(RequestType.POST, TestController.getInstance()::test)
+                .add(obs);
+    }
+
+    /**
+     * 获取OBS对象
+     *
+     * @return OBS对象
+     */
+    public ObservableResource getObs() {
+        return obs;
+
     }
 }
