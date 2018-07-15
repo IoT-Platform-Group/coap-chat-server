@@ -47,7 +47,7 @@ public class ApplicationResource extends CoapResource {
      * @param type     请求类型
      * @param exchange 交换对象
      */
-    private void executeMethod(RequestType type, CoapExchange exchange) {
+    protected void executeMethod(RequestType type, CoapExchange exchange) {
         ApplicationController.ControllerMethod method = map.getOrDefault(type, null);
         if (method != null) {
             method.execute(exchange);

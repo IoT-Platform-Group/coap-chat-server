@@ -17,8 +17,8 @@ public abstract class Main {
     public static void main(String[] args) {
         Server server = new Server();
         server
-                .add(new TestResource())
-                .add(new ChatResource());
+                .add(TestResource.getInstance())
+                .add(ChatResource.getInstance());
         Executors.newSingleThreadExecutor().execute(server::start);
     }
 }
