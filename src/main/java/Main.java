@@ -1,7 +1,5 @@
-import controller.TestController;
 import org.eclipse.californium.core.observe.ObserveRelation;
 import org.eclipse.californium.core.observe.ObserveRelationFilter;
-import resource.ApplicationResource;
 import resource.ChatResource;
 import resource.TestResource;
 
@@ -24,19 +22,19 @@ public abstract class Main {
                 .add(TestResource.getInstance())
                 .add(ChatResource.getInstance());
         Executors.newSingleThreadExecutor().execute(server::start);
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                TestResource.getInstance().getObs().changed();
-                new ObserveRelationFilter(){
-                    @Override
-                    public boolean accept(ObserveRelation observeRelation) {
-//                        observeRelation.getExchange().get
-                        return false;
-                    }
-                };
-            }
-        }, 0, 5000);
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                TestResource.getInstance().getObs().changed();
+//                new ObserveRelationFilter() {
+//                    @Override
+//                    public boolean accept(ObserveRelation observeRelation) {
+////                        observeRelation.getExchange().get
+//                        return false;
+//                    }
+//                };
+//            }
+//        }, 0, 5000);
     }
 }
