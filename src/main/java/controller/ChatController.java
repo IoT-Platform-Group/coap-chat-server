@@ -110,7 +110,7 @@ public class ChatController extends ApplicationController {
         String user = exchange.getQueryParameter("user");
         String message = getFirstMessage(user);
         if (message == null) {
-            exchange.respond(CoAP.ResponseCode.NOT_FOUND, "No message found!");
+            exchange.respond(CoAP.ResponseCode.VALID, "No message found!");
         } else {
             exchange.respond(CoAP.ResponseCode.VALID, String.format("Message : \"%s\"", message));
         }
