@@ -14,7 +14,6 @@ public class ObservableResource extends ApplicationResource {
      */
     public ObservableResource(String name) {
         super(name);
-        this.initialize();
     }
 
     /**
@@ -25,13 +24,13 @@ public class ObservableResource extends ApplicationResource {
      */
     ObservableResource(String name, boolean visible) {
         super(name, visible);
-        this.initialize();
     }
 
     /**
      * 初始化函数
      */
-    private void initialize() {
+    protected void initialize() {
+        super.initialize();
         setObservable(true);
         setObserveType(CoAP.Type.CON);
     }

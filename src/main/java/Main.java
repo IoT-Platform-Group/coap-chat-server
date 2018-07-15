@@ -1,4 +1,6 @@
 import controller.TestController;
+import org.eclipse.californium.core.observe.ObserveRelation;
+import org.eclipse.californium.core.observe.ObserveRelationFilter;
 import resource.ApplicationResource;
 import resource.ChatResource;
 import resource.TestResource;
@@ -27,6 +29,13 @@ public abstract class Main {
             @Override
             public void run() {
                 TestResource.getInstance().getObs().changed();
+                new ObserveRelationFilter(){
+                    @Override
+                    public boolean accept(ObserveRelation observeRelation) {
+//                        observeRelation.getExchange().get
+                        return false;
+                    }
+                };
             }
         }, 0, 5000);
     }

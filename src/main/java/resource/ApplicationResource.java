@@ -29,6 +29,7 @@ public class ApplicationResource extends CoapResource {
      */
     ApplicationResource(String name) {
         super(name);
+        this.initialize();
     }
 
     /**
@@ -39,6 +40,13 @@ public class ApplicationResource extends CoapResource {
      */
     ApplicationResource(String name, boolean visible) {
         super(name, visible);
+        this.initialize();
+    }
+
+    /**
+     * 初始化方法
+     */
+    protected void initialize() {
     }
 
     /**
