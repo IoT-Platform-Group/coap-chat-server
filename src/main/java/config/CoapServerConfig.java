@@ -3,7 +3,7 @@ package config;
 /**
  * 全局设置类
  */
-public abstract class ApplicationConfig {
+public abstract class CoapServerConfig {
     /**
      * 绑定ip地址
      */

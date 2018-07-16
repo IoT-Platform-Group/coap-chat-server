@@ -1,12 +1,11 @@
-package resource;
+package coap.resource;
 
-import controller.TestController;
+import coap.controller.TestController;
 
 /**
  * 测试资源（单例）
  */
 public class TestResource extends ApplicationResource {
-
     /**
      * 静态内部类
      */

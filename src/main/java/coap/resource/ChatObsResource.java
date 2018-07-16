@@ -1,6 +1,6 @@
-package resource;
+package coap.resource;
 
-import controller.ChatController;
+import coap.controller.ChatController;
 
 /**
  * 聊天OBS资源（单例）

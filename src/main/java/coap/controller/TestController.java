@@ -1,4 +1,4 @@
-package controller;
+package coap.controller;
 
 import org.eclipse.californium.core.server.resources.CoapExchange;
 
@@ -16,7 +16,7 @@ public class TestController extends ApplicationController {
      * 静态内部类
      */
     private static class TestControllerInstance {
-        private static TestController INSTANCE = new TestController();
+        private static final TestController INSTANCE = new TestController();
     }
 
     /**

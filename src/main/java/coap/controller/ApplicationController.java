@@ -1,4 +1,4 @@
-package controller;
+package coap.controller;
 
 import org.eclipse.californium.core.server.resources.CoapExchange;
 

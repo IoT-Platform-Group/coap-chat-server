@@ -1,2 +1,2 @@
-# coap-chat-server
-A demo of the chat system(server) based on coap.
+# coap-chat-mainServer
+A demo of the chat system(mainServer) based on coap.

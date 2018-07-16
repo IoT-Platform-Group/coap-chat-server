@@ -1,6 +1,6 @@
-package resource;
+package coap.resource;
 
-import controller.ApplicationController;
+import coap.controller.ApplicationController;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 
