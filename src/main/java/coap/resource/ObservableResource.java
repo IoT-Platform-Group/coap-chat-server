@@ -37,6 +37,25 @@ public abstract class ObservableResource extends ApplicationResource {
     }
 
     /**
+     * @param name        资源名
+     * @param connectType 连接类型 只能为{@code CoAP.Type.CON}或{@code CoAP.Type.NON}
+     */
+    ObservableResource(String name, CoAP.Type connectType) {
+        super(name);
+        setObserveType(connectType);
+    }
+
+    /**
+     * @param name        资源名
+     * @param connectType 连接类型 只能为{@code CoAP.Type.CON}或{@code CoAP.Type.NON}
+     * @param visible     可见性
+     */
+    ObservableResource(String name, CoAP.Type connectType, boolean visible) {
+        super(name, visible);
+        setObserveType(connectType);
+    }
+
+    /**
      * 初始化函数
      */
     protected void initialize() {
