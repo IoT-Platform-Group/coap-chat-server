@@ -2,7 +2,7 @@ package controller;
 
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.server.resources.CoapExchange;
-import resource.ChatResource;
+import resource.ChatObsResource;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -76,7 +76,7 @@ public class ChatController extends ApplicationController {
     private void putMessage(String user, String message) {
         getMessageQueue(user).add(message);
         System.out.println(String.format("Message to user [%s] : \"%s\"", user, message));
-        ChatResource.getInstance().getObs().changed();
+        ChatObsResource.getInstance().changed();
     }
 
     /**
@@ -110,7 +110,7 @@ public class ChatController extends ApplicationController {
         String user = exchange.getQueryParameter("user");
         String message = getFirstMessage(user);
         if (message == null) {
-            exchange.respond(CoAP.ResponseCode.NOT_FOUND, "No message found!");
+            exchange.respond(CoAP.ResponseCode.VALID, "No message found!");
         } else {
             exchange.respond(CoAP.ResponseCode.VALID, String.format("Message : \"%s\"", message));
         }

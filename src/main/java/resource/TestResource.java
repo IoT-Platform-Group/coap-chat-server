@@ -11,7 +11,7 @@ public class TestResource extends ApplicationResource {
      * 静态内部类
      */
     private static class TestResourceInstance {
-        private static TestResource INSTANCE = new TestResource();
+        private static final TestResource INSTANCE = new TestResource();
     }
 
     /**
@@ -24,29 +24,11 @@ public class TestResource extends ApplicationResource {
     }
 
     /**
-     * obs对象
-     */
-    private final ObservableResource obs;
-
-    /**
      * 构造函数
      */
     private TestResource() {
         super("test");
-        obs = new ObservableResource("obs").registerObserveMethod(TestController.getInstance()::getTime);
-        this
-                .registerMethod(RequestType.GET, TestController.getInstance()::test)
-                .registerMethod(RequestType.POST, TestController.getInstance()::test)
-                .add(obs);
-    }
-
-    /**
-     * 获取OBS对象
-     *
-     * @return OBS对象
-     */
-    public ObservableResource getObs() {
-        return obs;
-
+        registerMethod(RequestType.GET, TestController.getInstance()::test);
+        registerMethod(RequestType.POST, TestController.getInstance()::test);
     }
 }

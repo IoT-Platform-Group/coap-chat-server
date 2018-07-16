@@ -10,7 +10,7 @@ public class ChatResource extends ApplicationResource {
      * 静态内部类
      */
     private static class ChatResourceInstance {
-        private static ChatResource INSTANCE = new ChatResource();
+        private static final ChatResource INSTANCE = new ChatResource();
     }
 
     /**
@@ -23,26 +23,12 @@ public class ChatResource extends ApplicationResource {
     }
 
     /**
-     * 聊天OBS
-     */
-    private final ChatObsResource obs;
-
-    /**
      * 构造函数
      */
     private ChatResource() {
         super("chat");
         add(new ApplicationResource("send").registerMethod(RequestType.POST, ChatController.getInstance()::sendMessage));
-        this.obs = new ChatObsResource();
-        add(this.obs);
+        add(ChatObsResource.getInstance());
     }
 
-    /**
-     * 获取OBS
-     *
-     * @return OBS资源
-     */
-    public ChatObsResource getObs() {
-        return obs;
-    }
 }

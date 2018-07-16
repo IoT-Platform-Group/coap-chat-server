@@ -8,6 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 路由封装基类
+ * <p>
+ * 用法：
+ * 1、继承此类，并构建资源
+ * 2、通过registerMethod将该资源路径下的某请求方法和Controller内的方法进行绑定
+ * <p>
+ * 注意:
+ * 1、registerMethod中，如果对于某一请求方法进行了多次注册的话，那么将以最后一次为准（即前面的会被覆盖）
+ * <p>
+ * 建议：
+ * 1、所有继承的子类（除了其他基类之外），一律应该采用单例模式进行设计
+ * 2、在匿名环境下，直接实例化此类并进行快速构建即可
  */
 public class ApplicationResource extends CoapResource {
     /**
