@@ -1,6 +1,7 @@
-import coap.MainServer;
+import coap.MainCoapServer;
+import org.springframework.boot.SpringApplication;
+import web.WebApplication;
 
-import java.util.Scanner;
 import java.util.concurrent.Executors;
 
 /**
@@ -33,7 +34,7 @@ public abstract class Main {
      * @param args 命令行参数
      */
     private static void runCoapServer(String[] args) {
-        MainServer.getInstance().start();
+        MainCoapServer.getInstance().start();
     }
 
     /**
@@ -42,7 +43,7 @@ public abstract class Main {
      * @param args 命令行参数
      */
     private static void runWebServer(String[] args) {
-        
+        SpringApplication.run(WebApplication.class, args);
     }
 
     /**

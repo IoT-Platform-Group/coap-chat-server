@@ -13,12 +13,12 @@ import java.net.InetSocketAddress;
 /**
  * 主服务对象（单例）
  */
-public class MainServer extends CoapServer {
+public class MainCoapServer extends CoapServer {
     /**
      * 静态内部类
      */
     private static class MainServerInstance {
-        private static final MainServer INSTANCE = new MainServer();
+        private static final MainCoapServer INSTANCE = new MainCoapServer();
     }
 
     /**
@@ -26,14 +26,14 @@ public class MainServer extends CoapServer {
      *
      * @return 实例
      */
-    public static MainServer getInstance() {
+    public static MainCoapServer getInstance() {
         return MainServerInstance.INSTANCE;
     }
 
     /**
      * 构造函数
      */
-    private MainServer() {
+    private MainCoapServer() {
         initialize();
     }
 
